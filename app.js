@@ -5,6 +5,7 @@ const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverrride = require("method-override");
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/HomeEase";
 
@@ -26,7 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverrride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static('images'));
 
 app.get("/", (req, res) => {
   res.send("hii, I am root");
@@ -51,11 +51,14 @@ app.get("/listings/:id", async (req, res) => {
 });
 
 // create route
-app.post("/listings", async (req, res) => {
-  const newListing = new Listing(req.body.listing);
-  await newListing.save();
-  res.redirect("/listings");
-});
+app.post(
+  "/listings",
+  wrapAsync(async (req, res) => {
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+  })
+);
 
 // edit route
 app.get("/listings/:id/edit", async (req, res) => {
@@ -77,6 +80,10 @@ app.delete("/listings/:id", async (req, res) => {
   let deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
   res.redirect("/listings");
+});
+
+app.use((err, req, res, next) => {
+  res.send("Something went wront");
 });
 
 app.listen(8080, () => {
