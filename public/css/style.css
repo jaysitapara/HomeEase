@@ -24,7 +24,6 @@ body {
 }
 
 .f-info-links,
-.f-info-socials,
 .f-info-brand {
   width: 100%;
   display: flex;
@@ -32,11 +31,7 @@ body {
   justify-content: center;
 }
 
-.f-info-socials i {
-  font-size: 1.2rem;
-  margin-right: 1rem;
-}
-.f-info-links a {
+.f-info-links a{
   text-decoration: none;
   color: #222222;
 }
@@ -47,7 +42,7 @@ body {
 
 .f-info {
   text-align: center;
-  height: 8rem;
+  height: 5rem;
   background-color: #ebebeb;
   display: flex;
   flex-wrap: wrap;
