@@ -51,7 +51,7 @@ body {
 }
 
 /* Cards */
-.card {
+.listing-card {
   border: none !important;
   margin-bottom: 2rem;
 }
@@ -60,6 +60,7 @@ body {
   border-radius: 1rem !important;
   width: 100% !important;
   object-fit: cover !important;
+  border: 3px solid #fe424d !important;
 }
 
 .card-body {
@@ -80,7 +81,7 @@ body {
 }
 
 .card-img-overlay:hover {
-  opacity: 0.2;
+  opacity: 0.1;
   background-color: white;
 }
 
@@ -98,7 +99,7 @@ body {
 /* show page */
 
 .show-img {
-  height: 50vh;
+  height: 40vh;
 }
 
 .btns {
