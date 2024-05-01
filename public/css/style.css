@@ -31,7 +31,7 @@ body {
   justify-content: center;
 }
 
-.f-info-links a{
+.f-info-links a {
   text-decoration: none;
   color: #222222;
 }
@@ -98,7 +98,7 @@ body {
 /* show page */
 
 .show-img {
-  height: 30vh;
+  height: 50vh;
 }
 
 .btns {
@@ -108,4 +108,33 @@ body {
 .show-card {
   padding-left: 0;
   padding-right: 0;
+}
+
+/* .............. */
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  font-size: 2em; /* Increase the font size */
+  width: 1.1em;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+.rating > span:hover:before {
+  color: gold;
+}
+
+.rating > span:hover ~ span:before {
+  color: lightgrey;
 }
