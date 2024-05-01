@@ -39,7 +39,7 @@
 <hr />
 <div class="col-8 offset-3">
   <h4>Leave a review</h4>
-  <form action="/listings/<%= listing.id %>/reviews" method="post" class="mb-3">
+  <form action="/listings/<%= listing.id %>/reviews" method="post" class="mb-3 needs-validation" novalidate>
     <div class="mb-3 mt-3">
       <label for="rating" class="form-label">Rating</label>
       <input
@@ -51,15 +51,7 @@
         class="form-range"
       />
     </div>
-    <!-- <div class="container mt-5">
-      <div class="rating">
-        <span>&#x2606;</span>
-        <span>&#x2606;</span>
-        <span>&#x2606;</span>
-        <span>&#x2606;</span>
-        <span>&#x2606;</span>
-      </div>
-    </div> -->
+
     <div class="mb-3 mt-3">
       <label for="comment" class="form-label">Comment</label>
       <textarea
