@@ -31,9 +31,14 @@ app.use(methodOverrride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.render("listings/index", { allListings });
-});
+app.get(
+  "/",
+  wrapAsync(async (req, res) => {
+    const allListings = await Listing.find({});
+    res.render("listings/index", { allListings });
+  })
+);
+
 
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
