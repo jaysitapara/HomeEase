@@ -32,7 +32,7 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.send("hii, I am root");
+  res.render("listings/index", { allListings });
 });
 
 const validateListing = (req, res, next) => {
