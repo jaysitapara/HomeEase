@@ -9,7 +9,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-// const User = require("./models/user.js");
+const User = require("./models/User");
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -56,10 +56,10 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy(User.authenticate()));
 
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -67,13 +67,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// demo
 // app.get("/demouser", async (req, res) => {
 //   let fakeUser = new User({
 //     email: "student@gmail.com",
 //     username: "student",
 //   });
-//   let registeredUser = await User.register(fakeUser, "helloworld");
+//   let registeredUser = await User.register(fakeUser, "student");
 //   res.send(registeredUser);
 // });
 
