@@ -12,18 +12,25 @@
     />
     <div class="card-body mt-3">
       <p class="card-text">
-        <br />
+        <b>Owned by: <%= listing.owner.username %></b>
+      </p>
+      <p class="card-text">
         <b><%= listing.description %></b>
-        <br />
+      </p>
+      <p class="card-text">
         &#8377;<b><%= listing.price.toLocaleString("en-IN") %></b>
-        <br />
+      </p>
+      <p class="card-text">
         <b><%= listing.location %></b>
-        <br />
+      </p>
+      <p class="card-text">
         <b><%= listing.country %></b>
       </p>
     </div>
   </div>
 </div>
+
+<% if (currUser && currUser._id.equals(listing.owner)){%>
 
 <div class="btns">
   <a
@@ -36,6 +43,8 @@
     <button class="btn btn-dark offset-3"><b>Delete</b></button>
   </form>
 </div>
+<% } %>
+
 <hr />
 <div class="col-8 offset-3">
   <h4><b>Leave a review</b></h4>

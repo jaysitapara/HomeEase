@@ -17,7 +17,6 @@ router.post(
     try {
       const newUser = new User({ username, email });
       const registeredUser = await User.register(newUser, password);
-      console.log(registeredUser);
       req.login(registeredUser, (err) => {
         if (err) {
           return next(err);
@@ -45,7 +44,8 @@ router.post(
   }),
   async (req, res) => {
     req.flash("success", "Welcome to HomeEase!");
-    res.redirect(res.locals.redirectUrl); 
+    let redirectUrl = req.session.redirectUrl || "/listings";
+    res.redirect(redirectUrl);
   }
 );
 
