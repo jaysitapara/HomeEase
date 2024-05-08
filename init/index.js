@@ -58,8 +58,8 @@ async function initDB() {
     await Listing.deleteMany({});
     initData.data = initData.data.map((obj) => ({
       ...obj,
-      owner: "6639ce29bf62614d59c6e201",
-      image: obj.image.url,
+      owner: "663b0347b414ca3d6660878a",
+      // image: obj.image.url,
     }));
     await Listing.insertMany(initData.data);
     console.log("Data was initialized");

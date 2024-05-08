@@ -12,7 +12,10 @@
     />
     <div class="card-body mt-3">
       <p class="card-text">
-        <b>Owned by: <%= listing.owner.username %></b>
+        <b
+          >Owned by: <%= listing.owner ? listing.owner.username : 'Unknown'
+          %></b
+        >
       </p>
       <p class="card-text">
         <b><%= listing.description %></b>
@@ -30,14 +33,13 @@
   </div>
 </div>
 
-<% if (currUser && currUser._id.equals(listing.owner)){%>
-
+<% if (currUser && currUser._id && listing.owner && listing.owner._id &&
+currUser._id.equals(listing.owner._id)) { %>
 <div class="btns">
   <a
     href="/listings/<%= listing._id %>/edit"
     class="btn btn-dark col-1 offset-3 edit-btn"
-    ><b>Edit</b></a
-  >
+    ><b>Edit</b></a>
 
   <form method="post" action="/listings/<%= listing._id %>?_method=Delete">
     <button class="btn btn-dark offset-3"><b>Delete</b></button>
