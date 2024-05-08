@@ -12,7 +12,8 @@
     />
     <div class="card-body mt-3">
       <p class="card-text">
-        <b>Owned by:</b>&nbsp; <%= listing.owner.username %>
+        <b>Owned by:</b>&nbsp; <% try { %> <%= listing.owner.username %> <% }
+        catch(err) { %> *User Not Found* <% } %>
       </p>
       <p class="card-text">
         <b>Description:</b>&nbsp; <%= listing.description %>
@@ -26,7 +27,6 @@
   </div>
 </div>
 
-<!-- Edit and Delete buttons -->
 <% if (currUser && listing.owner._id.equals(currUser._id) ) {%>
 <div class="btns">
   <a
@@ -41,7 +41,6 @@
 </div>
 <% } %>
 
-<!-- Reviews -->
 <hr />
 
 <div class="col-8 offset-3">
