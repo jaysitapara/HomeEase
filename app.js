@@ -14,20 +14,9 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const mongoConnect = require("./init/connection.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/HomeEase";
-
-main()
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-async function main() {
-  await mongoose.connect(MONGO_URL);
-}
+mongoConnect();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
