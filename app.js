@@ -47,9 +47,9 @@ const sessionOptions = {
   },
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to HomeEase");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to HomeEase");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());

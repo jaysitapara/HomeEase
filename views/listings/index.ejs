@@ -1,7 +1,7 @@
 <%- layout('/layouts/boilerplate') %>
 
 <div class="mt-3">
-  <h3 class="mb-3 mt-3"><b>All Listings</b></h3>
+  <h3 class="mb-3 mt-3"><b>All Properties</b></h3>
   <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
     <% for (let listing of allListings) { %>
     <a class="listing-link" href="/listings/<%= listing._id %>">
