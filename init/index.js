@@ -1,33 +1,3 @@
-// const mongoose = require("mongoose");
-// const initData = require("./data.js");
-// const Listing = require("../models/listing.js");
-
-// const MONGO_URL = "mongodb://127.0.0.1:27017/HomeEase";
-
-// main()
-//   .then(() => {
-//     console.log("Connected to DB");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-// async function main() {
-//   await mongoose.connect(MONGO_URL);
-// }
-
-// const initDB = async () => {
-//   await Listing.deleteMany({});
-//   initData.data = initData.data.map((obj) => ({
-//     ...obj,
-//     owner: "6639ce29bf62614d59c6e201",
-//   }));
-//   await Listing.insertMany(initData.data);
-//   console.log("data was initialized");
-// };
-
-// initDB();
-
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 
@@ -58,8 +28,7 @@ async function initDB() {
     await Listing.deleteMany({});
     initData.data = initData.data.map((obj) => ({
       ...obj,
-      owner: "663b7f22b07f592568db829e",
-      // image: obj.image.url,
+      owner: "663f7bb5789ce9a568a1c15d",
     }));
     await Listing.insertMany(initData.data);
     console.log("Data was initialized");
