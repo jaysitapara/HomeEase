@@ -6,4 +6,4 @@ In HomeEase, any user can rent and lease their property and find out about renta
 ## Installation
 
 Clone the repository:
-   git clone https://github.com/jaysitapara/HomeEase
+git clone https://github.com/jaysitapara/HomeEase
