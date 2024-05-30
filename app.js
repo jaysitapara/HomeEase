@@ -16,7 +16,21 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const mongoConnect = require("./init/connection.js");
 
-mongoConnect();
+// mongoConnect();
+
+const MONGO_URL = "mongodb://127.0.0.1:27017/HomeEase";
+
+main()
+  .then(() => {
+    console.log("Connect to Database");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+async function main() {
+  await mongoose.connect(MONGO_URL);
+}
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -62,7 +76,7 @@ app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 app.all("*", (req, res, next) => {
-  next(new ExpessError(404, "Page not found"));
+  res.render("error.ejs", { message: "Page not found" });
 });
 
 app.use((err, req, res, next) => {
